@@ -1,94 +1,239 @@
-    <!doctype html>
-<html lang="pt">
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
- <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-
- <title>Tutorial WebCam Blog Jonathas Guerra</title>
-
- <script type="text/javascript" src="webcamjs-master/webcam.min.js"></script>
-
- <script language="JavaScript">
-
- function bater_foto()
- {
- Webcam.snap(function(data_uri)
- {
- document.getElementById('results').innerHTML = '<img id="base64image" src="'+data_uri+'"/><button onclick="salvar_foto();">Upload desta Foto</button>';
- });
- }
-
- function mostrar_camera()
- {
- Webcam.set({
- width: 640,
- height: 480,
- dest_width: 640,
- dest_height: 480,
- crop_width: 300,
- crop_height: 400,
- image_format: 'jpeg',
- jpeg_quality: 100,
- flip_horiz: true
- });
- Webcam.attach('#minha_camera');
- }
-
- function salvar_foto()
- {
- document.getElementById("carregando").innerHTML="Salvando, aguarde...";
- var file = document.getElementById("base64image").src;
- var formdata = new FormData();
- formdata.append("base64image", file);
- var ajax = new XMLHttpRequest();
- ajax.addEventListener("load", function(event) { upload_completo(event);}, false);
- ajax.open("POST", "upload.php");
- ajax.send(formdata);
- }
-
- function upload_completo(event)
- {
- document.getElementById("carregando").innerHTML="";
- var image_return=event.target.responseText;
- var showup=document.getElementById("completado").src=image_return;
- var showup2=document.getElementById("carregando").innerHTML='<b>Upload feito:</b>';
- }
- window.onload= mostrar_camera;
- </script>
- <style type="text/css">
- .container
- {
- float: left;
- width:320px;
- height: 480px;
- margin-right: 5px;
- padding: 5px;
- }
- #camera
- {
- background: #ff6666;
- height: 480px;
- }
- #previa
- {
- background: #ffc865;
- height: 480px;
- }
- #salva
- {
- background: #4dea02;
- height: 480px;
- }
- </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Provedor de Internet</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="css/estilo.css">
+    <style>
+        .social-icons i {
+            font-size: 24px;
+            margin: 0 10px;
+            color: #333;
+        }
+    </style>
 </head>
 <body>
- <div class="container" id="camera"><b>Câmera:</b>
- <div id="minha_camera"></div><form><input type="button" value="Tirar Foto" onClick="bater_foto()"></form>
- </div>
- <div class="container" id="previa">
- <b>Prévia:</b><div id="results"></div>
- </div>
- <div class="container" id="salva">
- <span id="carregando"></span><img id="completado" src=""/>
- </div>
+    <!-- Navbar -->
+    <div class="wrapper">
+        <header>
+           <nav>
+              <div class="menu-icon">
+                 <i class="fa fa-bars fa-2x"></i>
+              </div>
+              <div class="logo">
+                 LOGO
+              </div>
+              <div class="menu">
+                 <ul>
+                    <li><a href="#">Início</a></li>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a href="#">Para Você</a></li>
+                    <li><a href="#">Para Empresas</a></li>
+                    <li><a href="#">Nosso Contrato</a></li>
+                    <li><a href="#">Dúvidas   </a></li>
+                 </ul>
+              </div>
+           </nav>
+        </header>
+     </div>
+
+    <!-- Planos de Internet -->
+    <div class="container mt-5">
+        <h1 class="text-center">Nossos Planos de Internet</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://ixc.mundonetbandalarga.com.br/arquivos_publicos/200mega.png" class="card-img-top" alt="Plano Residencial">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Residencial</h5>
+                        <p class="card-text">Preço: R$ 99,99/mês</p>
+                        <a href="#" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://ixc.mundonetbandalarga.com.br/arquivos_publicos/50mega1.png" class="card-img-top" alt="Plano Empresarial">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Empresarial</h5>
+                        <p class="card-text">Preço: R$ 199,99/mês</p>
+                        <a href="#" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://ixc.mundonetbandalarga.com.br/arquivos_publicos/400mega.png" class="card-img-top" alt="Plano Premium">
+                    <div class="card-body">
+                        <h5 class="card-title">Plano Premium</h5>
+                        <p class="card-text ">Preço: R$ 299,99/mês</p>
+                        <a href="#" class="btn btn-primary">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- -------------------------------------------------------------------------------------------------------------------------------------------------- -->
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+       <!-- Remove the container if you want to extend the Footer to full width. -->
+<div class="container my-5">
+    <!-- Footer -->
+    <footer
+            class="text-center text-lg-start text-white"
+            style="background-color: #45526e"
+            >
+      <!-- Grid container -->
+      <div class="container p-4 pb-0">
+        <!-- Section: Links -->
+        <section class="">
+          <!--Grid row-->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">
+                PROVEDOR
+              </h6>
+              <p>
+                Somos o melhor provedor da sua área e estamos prontos para lhe proporcionar a melhor esperiencia da sua vida.
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">DESENVOLVEDOR</h6>
+              <p>contato:</p>
+              <p>
+                <a class="text-white">WhatsApp</a>
+              </p>
+              <p>
+                <a class="text-white">E-mail</a>
+              </p>
+              <p>
+                <a class="text-white">Instagram</a>
+              </p>
+              <p>
+                <a class="text-white">linkedin</a>
+              </p>
+            </div>
+            <!-- Grid column -->
+  
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <!-- <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">
+                Useful links
+              </h6>
+              <p>
+                <a class="text-white">Your Account</a>
+              </p>
+              <p>
+                <a class="text-white">Become an Affiliate</a>
+              </p>
+              <p>
+                <a class="text-white">Shipping Rates</a>
+              </p>
+              <p>
+                <a class="text-white">Help</a>
+              </p>
+            </div> -->
+  
+            <!-- Grid column -->
+            <hr class="w-100 clearfix d-md-none" />
+  
+            <!-- Grid column -->
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+              <h6 class="text-uppercase mb-4 font-weight-bold">EMPRESA</h6>
+              <p><i class="fas fa-home mr-3"></i> bairro,rua,quadra,predio</p>
+              <p><i class="fas fa-envelope mr-3"></i> Provedor@gmail.com</p>
+              <p><i class="fas fa-phone mr-3"></i> + 01 234 567 88</p>
+              <p><i class="fas fa-print mr-3"></i> + 01 234 567 89</p>
+            </div>
+            <!-- Grid column -->
+          </div>  
+          <!--Grid row-->
+        </section>
+        <!-- Section: Links -->
+  
+        <hr class="my-3">
+  
+        <!-- Section: Copyright -->
+        <section class="p-3 pt-0">
+          <div class="row d-flex align-items-center">
+            <!-- Grid column -->
+            <div class="col-md-7 col-lg-8 text-center text-md-start">
+              <!-- Copyright -->
+              <div class="p-3">
+                © 2023 PROVEDOR
+              </div>
+              <!-- Copyright -->
+            </div>
+            <!-- Grid column -->
+  
+            <!-- Grid column -->
+            <div class="col-md-5 col-lg-4 ml-lg-0 text-center text-md-end">
+              <!-- Facebook -->
+              <a
+                 class="btn btn-outline-light btn-floating m-1"
+                 class="text-white"
+                 role="button"
+                 ><i class="fab fa-facebook-f"></i
+                ></a>
+  
+              <!-- Twitter -->
+              <a
+                 class="btn btn-outline-light btn-floating m-1"
+                 class="text-white"
+                 role="button"
+                 ><i class="fab fa-twitter"></i
+                ></a>
+  
+              <!-- Google -->
+              <a
+                 class="btn btn-outline-light btn-floating m-1"
+                 class="text-white"
+                 role="button"
+                 ><i class="fab fa-google"></i
+                ></a>
+  
+              <!-- Instagram -->
+              <a
+                 class="btn btn-outline-light btn-floating m-1"
+                 class="text-white"
+                 role="button"
+                 ><i class="fab fa-instagram"></i
+                ></a>
+            </div>
+            <!-- Grid column -->
+          </div>
+        </section>
+        <!-- Section: Copyright -->
+      </div>
+      <!-- Grid container -->
+    </footer>
+    <!-- Footer -->
+  </div>
+  <!-- End of .container -->
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script/script.js"></script>
 </body>
-</htm>
+</html>
